@@ -1,2 +1,2 @@
-chai   = require('chai');
+mocha  = require('mocha');
 assert = require('assert');

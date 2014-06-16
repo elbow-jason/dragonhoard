@@ -1,16 +1,17 @@
-var connect = require('connect'),
-    http    = require('http'),
-    io      = require('socket.io');
+var koa    = require('koa'),
+    logger = require('koa-logger'),
+    router = require('koa-router'),
+    static = require('koa-static');
 
-var app = connect()
-  .use(connect.logger('dev'))
-  .use(connect.static('public'))
-  .use(connect.directory('public'))
-  .use(function (request, response) {
-    response.end("Hello. You shouldn't be seeing this. Tell your web master he's an idiot.");
-   });
 
-var server = http.createServer(app);
+var app = koa();
+app
+  .use(logger())
+  .use(static('public'));
 
-server.listen(1337);
-io.listen(server);
+app
+  .use(function *() {
+    this.body = "Hello. You shouldn't be seeing this. Tell your web master he's an idiot.";
+  });
+
+app.listen(1337);

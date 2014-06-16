@@ -4,22 +4,19 @@
   "version": "0.0.0",
   "description": "a open source nodejs e-commerce platform",
   "dependencies": {
-    "nodemon": "^1.0.15",
-    "connect": "^2.13.0",
-    "pageres": "^0.2.3",
-    "mongoose": "^3.8.8",
-    "socket.io": "^0.9.16"
+    "koa": "^0.8.0",
+    "koa-logger": "^1.2.1",
+    "koa-mount": "^1.3.0",
+    "koa-router": "^3.1.4",
+    "koa-static": "^1.4.5"
   },
   "main": "index.js",
   "scripts": {
     "test": "make test",
-    "start": "./node_modules/.bin/nodemon index.js",
+    "start": "node --harmony index.js",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --reporter=mocha-istanbul test/**/*.js",
     "coveralls": "npm run-script coverage && ./node_modules/.bin/coveralls.js < coverage/lcov.info"
   },
-  "os": [
-    "!win32"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dragonhoard/dragonhoard.git"
@@ -31,10 +28,12 @@
     "David Fuka"
   ],
   "license": "GPL-3.0+",
+  "engines": {
+    "node": "^0.11.13"
+  },
   "devDependencies": {
     "mocha-istanbul": "^0.2.0",
     "mocha-lcov-reporter": "0.0.1",
-    "chai": "^1.9.0",
     "mocha": "^1.17.1",
     "coveralls": "^2.8.0",
     "istanbul": "^0.2.4"
