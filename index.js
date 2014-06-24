@@ -1,4 +1,6 @@
 var koa    = require('koa'),
+    koaPg  = require('koa-pg'),
+    config = require('./config'),
     logger = require('koa-logger'),
     router = require('koa-router'),
     static = require('koa-static');
@@ -7,6 +9,7 @@ var koa    = require('koa'),
 var app = koa();
 app
   .use(logger())
+  .use(koaPg(config.db))
   .use(static('public'));
 
 app
