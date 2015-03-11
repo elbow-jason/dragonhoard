@@ -1,21 +1,19 @@
 DragonHoard [![Build Status](https://travis-ci.org/dragonhoard/dragonhoard.png)](https://travis-ci.org/dragonhoard/dragonhoard)
 ===========
 
-An e-commerce, point of sale, inventory management, and store management platform for Nodejs.
+An e-commerce, point of sale, inventory management, and store management platform for GoLang.
 
 Requirements
 ------------
 
-1. Nodejs
-2. Mongodb
+1. GoLang
+2. MongoDb
 
 Install
 -------
 
 ```
-git clone https://github.com/dragonhoard/dragonhoard.git
-cd dragonhoard
-npm install
+go install github.com/dragonhoard/dragonhoard
 ```
 
 Contribute
@@ -28,9 +26,7 @@ We are using [waffle.io](http://waffle.io/) to manage our user stories. To contr
 Goals
 -----
 
-Aiming to be the first Open Source Nodejs e-commerce platform, we are expanding even what an e-commerce platform even is. Our goal is to provide a highly customizable template driven inventory management system, with rfid tag integration, a customizable point of sale, a streamlined ticketing system to track the product from creation to completion, a customer relation management tool, all with a web front end that is completly themeable.
-
-These are not unattainable goals. We have years of experience in this field and are putting all of our experience into this.
+Aiming to be the first Open Source GoLang e-commerce platform, we are expanding even what an e-commerce platform even is. Our goal is to provide a highly customizable template driven inventory management system, with rfid tag integration, a customizable point of sale, a streamlined ticketing system to track the product from creation to completion, a customer relation management tool, all with a web front end that is completely themeable.
 
 Business Model
 --------------

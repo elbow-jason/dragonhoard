@@ -1,23 +1,4 @@
 ########################
-# node.js / npm
-########################
-lib-cov
-coverage
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-
-pids
-logs
-results
-
-node_modules
-
-########################
 # misc / editors
 ########################
 *~
@@ -27,3 +8,4 @@ node_modules
 nbproject
 .idea
 *.sw*
+dragonhoard*
