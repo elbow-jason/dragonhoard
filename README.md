@@ -6,8 +6,7 @@ An e-commerce, point of sale, inventory management, and store management platfor
 Requirements
 ------------
 
-1. GoLang
-2. MongoDb
+1. GoLang 1.4
 
 Install
 -------
