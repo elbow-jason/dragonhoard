@@ -40,3 +40,10 @@ config :dragon_hoard, DragonHoard.Repo,
   database: "dragon_hoard_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :dragon_hoard, DragonHoard.Seabass, #Seabass is for cbase is for couchbase. Get it?
+  host: "localhost",
+  port: 8901,
+  username: "dragon_hoard",
+  password: "password"
+

@@ -1,3 +1,3 @@
 defmodule DragonHoard.Repo do
-  use Ecto.Repo, otp_app: :dragon_hoard
+  def start_link, do: :ok
 end

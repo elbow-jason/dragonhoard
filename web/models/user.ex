@@ -1,23 +1,20 @@
 defmodule DragonHoard.User do
-  use DragonHoard.Web, :model
+  alias DragonHoard.User
 
-  schema "users" do
-    field :name, :string
+  defstruct [
+    name:     nil,
+    email:    nil,
+    login:    nil,
+    id:       nil,
+    pw_hash:  nil,
+  ]
 
-    timestamps
+  def register(%User{} = user) do
+    # make sure it's valid
+    # unique login
+    # unique email
+    # make sure pw is hashed
   end
 
-  @required_fields ~w(name)
-  @optional_fields ~w()
 
-  @doc """
-  Creates a changeset based on the `model` and `params`.
-
-  If no params are provided, an invalid changeset is returned
-  with no validation performed.
-  """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
-  end
 end
