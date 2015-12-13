@@ -3,7 +3,7 @@ defmodule DragonHoard.UserTest do
 
   alias DragonHoard.User
 
-  @valid_attrs %{name: "some content"}
+  @valid_attrs %{email: "some content", pw_hash: "some content", roles: []}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

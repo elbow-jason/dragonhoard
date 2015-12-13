@@ -33,7 +33,7 @@ defmodule DragonHoard.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_dragon_hoard_key",
-    signing_salt: "89nEdVgO"
+    signing_salt: "GBUgXZRy"
 
   plug DragonHoard.Router
 end

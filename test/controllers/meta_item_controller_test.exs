@@ -1,8 +1,8 @@
-defmodule DragonHoard.UserControllerTest do
+defmodule DragonHoard.MetaItemControllerTest do
   use DragonHoard.ConnCase
 
-  alias DragonHoard.User
-  @valid_attrs %{email: "some content", pw_hash: "some content", roles: []}
+  alias DragonHoard.MetaItem
+  @valid_attrs %{kind_of: "some content", name: "some content"}
   @invalid_attrs %{}
 
   setup do
@@ -11,53 +11,52 @@ defmodule DragonHoard.UserControllerTest do
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = get conn, user_path(conn, :index)
+    conn = get conn, meta_item_path(conn, :index)
     assert json_response(conn, 200)["data"] == []
   end
 
   test "shows chosen resource", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = get conn, user_path(conn, :show, user)
-    assert json_response(conn, 200)["data"] == %{
-      "id" => user.id,
-      "email" => user.email,
-    }
+    meta_item = Repo.insert! %MetaItem{}
+    conn = get conn, meta_item_path(conn, :show, meta_item)
+    assert json_response(conn, 200)["data"] == %{"id" => meta_item.id,
+      "name" => meta_item.name,
+      "kind_of" => meta_item.kind_of}
   end
 
   test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
     assert_raise Ecto.NoResultsError, fn ->
-      get conn, user_path(conn, :show, -1)
+      get conn, meta_item_path(conn, :show, -1)
     end
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, user_path(conn, :create), user: @valid_attrs
+    conn = post conn, meta_item_path(conn, :create), meta_item: @valid_attrs
     assert json_response(conn, 201)["data"]["id"]
-    assert Repo.get_by(User, @valid_attrs)
+    assert Repo.get_by(MetaItem, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, user_path(conn, :create), user: @invalid_attrs
+    conn = post conn, meta_item_path(conn, :create), meta_item: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = put conn, user_path(conn, :update, user), user: @valid_attrs
+    meta_item = Repo.insert! %MetaItem{}
+    conn = put conn, meta_item_path(conn, :update, meta_item), meta_item: @valid_attrs
     assert json_response(conn, 200)["data"]["id"]
-    assert Repo.get_by(User, @valid_attrs)
+    assert Repo.get_by(MetaItem, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = put conn, user_path(conn, :update, user), user: @invalid_attrs
+    meta_item = Repo.insert! %MetaItem{}
+    conn = put conn, meta_item_path(conn, :update, meta_item), meta_item: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = delete conn, user_path(conn, :delete, user)
+    meta_item = Repo.insert! %MetaItem{}
+    conn = delete conn, meta_item_path(conn, :delete, meta_item)
     assert response(conn, 204)
-    refute Repo.get(User, user.id)
+    refute Repo.get(MetaItem, meta_item.id)
   end
 end

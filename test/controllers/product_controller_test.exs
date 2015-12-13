@@ -1,8 +1,8 @@
-defmodule DragonHoard.UserControllerTest do
+defmodule DragonHoard.ProductControllerTest do
   use DragonHoard.ConnCase
 
-  alias DragonHoard.User
-  @valid_attrs %{email: "some content", pw_hash: "some content", roles: []}
+  alias DragonHoard.Product
+  @valid_attrs %{kind_of: "some content", name: "some content"}
   @invalid_attrs %{}
 
   setup do
@@ -11,53 +11,52 @@ defmodule DragonHoard.UserControllerTest do
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = get conn, user_path(conn, :index)
+    conn = get conn, product_path(conn, :index)
     assert json_response(conn, 200)["data"] == []
   end
 
   test "shows chosen resource", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = get conn, user_path(conn, :show, user)
-    assert json_response(conn, 200)["data"] == %{
-      "id" => user.id,
-      "email" => user.email,
-    }
+    product = Repo.insert! %Product{}
+    conn = get conn, product_path(conn, :show, product)
+    assert json_response(conn, 200)["data"] == %{"id" => product.id,
+      "name" => product.name,
+      "kind_of" => product.kind_of}
   end
 
   test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
     assert_raise Ecto.NoResultsError, fn ->
-      get conn, user_path(conn, :show, -1)
+      get conn, product_path(conn, :show, -1)
     end
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, user_path(conn, :create), user: @valid_attrs
+    conn = post conn, product_path(conn, :create), product: @valid_attrs
     assert json_response(conn, 201)["data"]["id"]
-    assert Repo.get_by(User, @valid_attrs)
+    assert Repo.get_by(Product, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, user_path(conn, :create), user: @invalid_attrs
+    conn = post conn, product_path(conn, :create), product: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = put conn, user_path(conn, :update, user), user: @valid_attrs
+    product = Repo.insert! %Product{}
+    conn = put conn, product_path(conn, :update, product), product: @valid_attrs
     assert json_response(conn, 200)["data"]["id"]
-    assert Repo.get_by(User, @valid_attrs)
+    assert Repo.get_by(Product, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = put conn, user_path(conn, :update, user), user: @invalid_attrs
+    product = Repo.insert! %Product{}
+    conn = put conn, product_path(conn, :update, product), product: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    user = Repo.insert! %User{}
-    conn = delete conn, user_path(conn, :delete, user)
+    product = Repo.insert! %Product{}
+    conn = delete conn, product_path(conn, :delete, product)
     assert response(conn, 204)
-    refute Repo.get(User, user.id)
+    refute Repo.get(Product, product.id)
   end
 end

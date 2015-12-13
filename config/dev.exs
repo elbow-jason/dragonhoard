@@ -35,15 +35,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :dragon_hoard, DragonHoard.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "dragon_hoard",
-  password: "password",
+  #username: "mongodb",
+  #password: "mongodb",
   database: "dragon_hoard_dev",
   hostname: "localhost",
   pool_size: 10
-
-config :dragon_hoard, DragonHoard.Seabass, #Seabass is for cbase is for couchbase. Get it?
-  host: "localhost",
-  port: 8901,
-  username: "dragon_hoard",
-  password: "password"
-
