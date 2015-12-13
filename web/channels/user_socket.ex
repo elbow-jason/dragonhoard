@@ -3,7 +3,7 @@ defmodule DragonHoard.UserSocket do
 
   ## Channels
   channel "users:*",      DragonHoard.UserChannel
-  channel "shops:lobby",  DragonHoard.ShopChannel
+  channel "shops:*",      DragonHoard.ShopChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

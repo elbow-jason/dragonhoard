@@ -1,6 +1,7 @@
 defmodule DragonHoard.Configuration do
   use DragonHoard.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "configurations" do
     field :name, :string
 

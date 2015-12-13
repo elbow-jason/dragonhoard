@@ -1,8 +1,9 @@
 defmodule DragonHoard.Product do
   use DragonHoard.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "products" do
-    field :name, :string
+    field :name,    :string
     field :kind_of, :string
 
     timestamps

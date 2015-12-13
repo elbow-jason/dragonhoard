@@ -1,15 +1,12 @@
 defmodule DragonHoard.Password do
   alias DragonHoard.User
 
-  def hash(password) do
-    # need to put comeonin here
-    :implement_me
+  def hash_password(password) do
+    Comeonin.Bcrypt.hashpwsalt(password)
   end
 
-  def matches?(pw_hash, password_attempt) do
-    #check to see if it matches
-    # need to put comeonin here
-    :implement_me
+  def matches?(password_attempt, pw_hash) do
+    Comeonin.Bcrypt.checkpw(password_attempt, pw_hash)
   end
 
 end

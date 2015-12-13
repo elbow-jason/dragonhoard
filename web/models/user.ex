@@ -1,9 +1,13 @@
 defmodule DragonHoard.User do
   use DragonHoard.Web, :model
 
+  alias DragonHoard.Password
+  alias __MODULE__
+
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "users" do
-    field :email, :string
-    field :password, :string, virtual: true
+    field :email,     :string
+    field :password,  :string, virtual: true
 
     field :roles, {:array, :string}
     field :pw_hash, :string
@@ -11,7 +15,7 @@ defmodule DragonHoard.User do
     timestamps
   end
 
-  @required_fields ~w(email pw_hash)
+  @required_fields ~w(email password)
   @optional_fields ~w(roles)
 
   @doc """
@@ -23,5 +27,13 @@ defmodule DragonHoard.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def hash_password(%User{password: password} = user) do
+    user |> Map.put(:pw_hash, Password.hash_password(password))
+  end
+
+  def password_is_correct?(%User{pw_hash: pw_hash}, attempted_password) do
+    Password.password_matches?(attempted_password, pw_hash)
   end
 end

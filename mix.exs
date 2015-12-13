@@ -17,8 +17,17 @@ defmodule DragonHoard.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {DragonHoard, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+     applications: [
+        :phoenix,
+        :phoenix_html,
+        :cowboy,
+        :logger,
+        :phoenix_ecto,
+        :postgrex,
+        :comeonin,
+        :mongodb_ecto,
+      ]
+    ]
   end
 
   # Specifies which paths to compile per environment
@@ -36,7 +45,8 @@ defmodule DragonHoard.Mixfile do
       {:phoenix_html, "~> 2.1"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:cowboy, "~> 1.0"},
-      # {:comeonin, },
+      {:comeonin, "~> 1.6"},
+      {:mongodb_ecto, "~> 0.1"},
     ]
   end
 end

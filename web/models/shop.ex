@@ -1,6 +1,7 @@
 defmodule DragonHoard.Shop do
   use DragonHoard.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "shops" do
     field :name, :string
 

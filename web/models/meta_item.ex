@@ -1,6 +1,7 @@
 defmodule DragonHoard.MetaItem do
   use DragonHoard.Web, :model
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "meta_items" do
     field :name, :string
     field :kind_of, :string
