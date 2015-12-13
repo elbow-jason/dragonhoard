@@ -1,18 +1,14 @@
-defmodule DragonHoard.User do
+defmodule DragonHoard.Configuration do
   use DragonHoard.Web, :model
 
-  schema "users" do
-    field :email, :string
-    field :password, :string, virtual: true
-
-    field :roles, {:array, :string}
-    field :pw_hash, :string
+  schema "configurations" do
+    field :name, :string
 
     timestamps
   end
 
-  @required_fields ~w(email pw_hash)
-  @optional_fields ~w(roles)
+  @required_fields ~w(name)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.

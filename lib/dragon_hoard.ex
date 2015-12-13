@@ -10,7 +10,7 @@ defmodule DragonHoard do
       # Start the endpoint when the application starts
       supervisor(DragonHoard.Endpoint, []),
       # Start the Ecto repository
-      # worker(DragonHoard.Repo, []),
+      worker(DragonHoard.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(DragonHoard.Worker, [arg1, arg2, arg3]),
     ]

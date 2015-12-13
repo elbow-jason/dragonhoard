@@ -9,11 +9,14 @@ config :dragon_hoard, DragonHoard.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+# Set a higher stacktrace during test
+config :phoenix, :stacktrace_depth, 20
+
 # Configure your database
 config :dragon_hoard, DragonHoard.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "dragon_hoard",
-  password: "password",
+  username: "postgres",
+  password: "postgres",
   database: "dragon_hoard_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

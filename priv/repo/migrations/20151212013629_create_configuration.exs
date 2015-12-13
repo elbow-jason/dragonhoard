@@ -1,8 +1,8 @@
-defmodule DragonHoard.Repo.Migrations.CreateUser do
+defmodule DragonHoard.Repo.Migrations.CreateConfiguration do
   use Ecto.Migration
 
   def change do
-    create table(:users) do
+    create table(:configurations) do
       add :name, :string
 
       timestamps

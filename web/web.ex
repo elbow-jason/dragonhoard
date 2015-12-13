@@ -18,10 +18,8 @@ defmodule DragonHoard.Web do
 
   def model do
     quote do
-      #use Ecto.Model
-
-      #import Ecto.Changeset
-      #import Ecto.Query, only: [from: 1, from: 2]
+      use Ecto.Model
+      
     end
   end
 
@@ -30,8 +28,8 @@ defmodule DragonHoard.Web do
       use Phoenix.Controller
 
       alias DragonHoard.Repo
-      #import Ecto.Model
-      #import Ecto.Query, only: [from: 1, from: 2]
+      import Ecto.Model
+      import Ecto.Query, only: [from: 1, from: 2]
 
       import DragonHoard.Router.Helpers
     end
@@ -62,8 +60,9 @@ defmodule DragonHoard.Web do
       use Phoenix.Channel
 
       alias DragonHoard.Repo
-      #import Ecto.Model
-      #import Ecto.Query, only: [from: 1, from: 2]
+      import Ecto.Model
+      import Ecto.Query, only: [from: 1, from: 2]
+
     end
   end
 

@@ -9,7 +9,7 @@ use Mix.Config
 config :dragon_hoard, DragonHoard.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
-  secret_key_base: "6MV40WJ593jcWVoF+s613nU2KE/9iAExmeTylqDwf6T81VdhXHJVlX/+DC/EWFUx",
+  secret_key_base: "djtez/TYXMymerlg3ke1MSFbENTpuSAuzBGzwyxCU0pF265Ka3P7yDRDN7iuC9eg",
   render_errors: [accepts: ~w(html json)],
   pubsub: [name: DragonHoard.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -27,4 +27,3 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
-
